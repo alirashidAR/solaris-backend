@@ -5,6 +5,7 @@ const WebSocket = require('ws');
 const { initializeApp, getApps } = require('firebase/app');
 const { getFirestore, collection, getDocs, onSnapshot } = require('firebase/firestore');
 const cors = require('cors');
+const { error } = require('console');
 
 const app = express();
 app.use(cors());
@@ -145,6 +146,13 @@ app.get('/hangman-scores', async (req, res) => {
         res.status(500).json({ error: "An error occurred while fetching Hangman scores" });
     }
 });
+
+
+app.get('/', async(req,res)=>{
+    res.status(200).json({
+        works:"YES"
+    })
+})
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
